@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1569011028597.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "BA08E5BB",
+    "lastKnownWriteTime" : 1569018618,
+    "last_content_update" : 1569018624652,
+    "path" : "~/Data/OpenIntro Stats/intro_data_prob_project.Rmd",
+    "project_path" : "intro_data_prob_project.Rmd",
+    "properties" : {
+        "cursorPosition" : "99,21",
+        "scrollLine" : "71"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

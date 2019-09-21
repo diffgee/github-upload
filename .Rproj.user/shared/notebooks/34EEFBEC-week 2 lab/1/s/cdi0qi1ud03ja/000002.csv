@@ -1,0 +1,5 @@
+"0","# type your code for Question 10 here, and Knit"
+"0","nycflights <- nycflights %>%"
+"0","  mutate(arr_type = ifelse(arr_delay <= 0, ""on time"", ""delayed""))"
+"0",""
+"0",""
