@@ -69,8 +69,9 @@ brfss_sl_alc <- brfss_clean %>%
 
 summary(brfss_sl_alc)
 
-ggplot(data = brfss_sl_alc, aes(x = sleptim1, y = avedrnk2)) +
-        geom_point()
+p_alc <- ggplot(data = brfss_sl_alc, aes(x = sleptim1, y = avedrnk2))
+
+p_alc + geom_point() + geom_smooth()
 ```
 
 
@@ -84,8 +85,9 @@ brfss_sl_chl <- brfss_clean %>%
 
 summary(brfss_sl_chl)
 
-ggplot(data = brfss_sl_chl, aes(x = children, y = sleptim1)) +
-        geom_point()
+p_chl <- ggplot(data = brfss_sl_chl, aes(x = children, y = sleptim1))
+
+p_chl + geom_point() + geom_smooth()
 ```
 
 
@@ -99,7 +101,8 @@ brfss_sl_pay <- brfss_clean %>%
 
 summary(brfss_sl_pay)
 
-ggplot(data = brfss_sl_pay, aes(x = scntlpad, y = sleptim1)) +
-        geom_boxplot()
+p_pay <- ggplot(data = brfss_sl_pay, aes(x = scntlpad, y = sleptim1))
+
+p_pay + geom_boxplot()
 ```
 
