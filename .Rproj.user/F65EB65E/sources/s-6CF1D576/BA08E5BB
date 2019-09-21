@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
+    "hash" : "675438906",
     "id" : "BA08E5BB",
-    "lastKnownWriteTime" : 1569018618,
-    "last_content_update" : 1569018624652,
+    "lastKnownWriteTime" : 1569031777,
+    "last_content_update" : 1569031779124,
     "path" : "~/Data/OpenIntro Stats/intro_data_prob_project.Rmd",
     "project_path" : "intro_data_prob_project.Rmd",
     "properties" : {
-        "cursorPosition" : "99,21",
-        "scrollLine" : "71"
+        "cursorPosition" : "105,0",
+        "scrollLine" : "73"
     },
     "read_only" : false,
     "read_only_alternatives" : [
