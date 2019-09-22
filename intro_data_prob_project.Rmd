@@ -79,15 +79,58 @@ p_alc + geom_point() + geom_smooth()
 **Research quesion 2:**
 
 ```{r}
-brfss_sl_chl <- brfss_clean %>%
-        select(sleptim1, children) %>%
-        drop_na()
+#prepare dataset, remove obvious outliers and na
+brfss_sl_chl <- brfss2013 %>%
+        select(sleptim1, children, X_ageg5yr) %>%
+        drop_na() %>%
+        filter(children < 20 & sleptim1 < 24)
+
+#look at the data with tables and numerical summary
+head(brfss_sl_chl)
 
 summary(brfss_sl_chl)
 
+brfss_sl_chl %>%
+  group_by(X_ageg5yr) %>%
+  summarise(mean = mean(children), median = median(children))
+
+#look at the data visually
 p_chl <- ggplot(data = brfss_sl_chl, aes(x = children, y = sleptim1))
 
-p_chl + geom_point() + geom_smooth()
+p_chl + geom_point()
+
+p_chl + geom_jitter() + coord_flip()
+
+ggplot(data = brfss_sl_chl, aes(x = sleptim1, y = children)) +
+  geom_point()
+
+ag_ch <- ggplot(data = brfss_sl_chl, aes(x = X_ageg5yr, y = children))
+  
+ag_ch + geom_boxplot() + coord_flip()
+
+a_c <- brfss_sl_chl %>%
+  group_by(X_ageg5yr) %>%
+  mutate(outlier_high = children > quantile(children, .75) + 1.50*IQR(children), outlier_low = children < quantile(children, .25) - 1.50*IQR(children)) %>%
+  ungroup()
+
+a_c <- a_c %>%
+  group_by(X_ageg5yr) %>%
+  mutate(outlier = children > median(children) + IQR(children) * 1.5) %>%
+  ungroup()
+
+a_c <- a_c %>%
+  mutate(outlier_color = case_when(outlier_high ~ "red", outlier_low ~ "steelblue"))
+
+head(a_c)
+
+
+ggplot(data = a_c, aes(x = X_ageg5yr, y = children)) +
+         geom_boxplot(outlier.shape = NA) + coord_flip() + geom_jitter(color = a_c$outlier_color, width = .2)
+
+ggplot(data = a_c, aes(x = X_ageg5yr, y = children)) +
+         geom_boxplot(outlier.shape = NA) + coord_flip() +
+          geom_jitter(data = filter(a_c, outlier ==T), width = .2)
+
 ```
 
 
@@ -99,7 +142,9 @@ brfss_sl_pay <- brfss_clean %>%
         select(sleptim1, scntlpad) %>%
         drop_na()
 
-summary(brfss_sl_pay)
+brfss_sl_pay %>%
+  group_by(scntlpad) %>%
+  summarise(median(sleptim1), mean(sleptim1), IQR(sleptim1))
 
 p_pay <- ggplot(data = brfss_sl_pay, aes(x = scntlpad, y = sleptim1))
 
