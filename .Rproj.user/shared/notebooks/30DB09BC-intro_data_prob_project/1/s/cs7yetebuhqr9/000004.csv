@@ -1,2 +1,0 @@
-"0","brfss_clean <- brfss2013 %>%"
-"0","        select(sleptim1, avedrnk2, children, scntlpad)"
